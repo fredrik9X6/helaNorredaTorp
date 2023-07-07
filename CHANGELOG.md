@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- 6c6f8aa: 3rd commit, bytte till lowercase namn
+
+## 1.0.1
+
+### Patch Changes
+
 - d4361f6: 2nd npm commit efter att ha ändrat name i packe.json
 
 ## 1.0.1
