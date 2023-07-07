@@ -1,13 +1,13 @@
 {
-  "name": "@finsweet/developer-starter",
+  "name": "@fredrik9X6/helaNorredaTorp",
   "version": "0.0.0",
-  "description": "Developer starter template for Finsweet projects.",
+  "description": "kod för att hyra hela norreda torp (inte template pages)",
   "homepage": "https://github.com/finsweet/developer-starter#readme",
   "license": "ISC",
   "keywords": [],
   "author": {
-    "name": "Finsweet",
-    "url": "https://finsweet.com/"
+    "name": "9X6",
+    "url": "https://9x6.se/"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,8 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
-    "@finsweet/ts-utils": "^0.39.2"
+    "@finsweet/ts-utils": "^0.39.2",
+    "flatpickr": "^4.6.13"
   },
   "engines": {
     "pnpm": ">=8"
