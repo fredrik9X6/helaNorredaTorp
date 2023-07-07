@@ -1,5 +1,11 @@
 # @fredrik9X6/helaNorredaTorp
 
+## 1.1.0
+
+### Minor Changes
+
+- 5bb2183: test igen
+
 ## 1.0.1
 
 ### Patch Changes
