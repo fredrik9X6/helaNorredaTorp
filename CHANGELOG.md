@@ -1,5 +1,11 @@
 # @fredrik9X6/helaNorredaTorp
 
+## 1.2.0
+
+### Minor Changes
+
+- e89ec70: lade till appendPriceInput function som skriver i totalPrice i ett input field.
+
 ## 1.1.1
 
 ### Patch Changes
