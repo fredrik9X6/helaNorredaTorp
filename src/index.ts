@@ -55,8 +55,15 @@ window.Webflow.push(() => {
 
       const totalPrice = calculateTotalPrice(startDate, endDate, memberDiscount, allLodgesRate);
       document.getElementById('total-price').textContent = totalPrice.toString();
+
+      appendPriceInput(totalPrice);
     },
   });
+
+  function appendPriceInput(totalPrice) {
+    const priceInput = document.getElementById('price-input');
+    priceInput.value = totalPrice.toString();
+  }
 
   const calculateTotalPrice = (startDate, endDate, memberDiscount, allLodgesRate) => {
     const start = new Date(startDate);
