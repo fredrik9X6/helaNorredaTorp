@@ -1,5 +1,11 @@
 # @fredrik9X6/helaNorredaTorp
 
+## 1.2.1
+
+### Patch Changes
+
+- 8363a05: uppdaterade getAllBookedDates med att ta bort de två första datumen, för att få flatpickr att displaya rätt
+
 ## 1.2.0
 
 ### Minor Changes
