@@ -56,7 +56,8 @@ window.Webflow.push(() => {
       const startDate = selectedDates[0] ? selectedDates[0].toISOString().split('T')[0] : '';
       const endDate = selectedDates[1] ? selectedDates[1].toISOString().split('T')[0] : '';
 
-      const memberDiscount = document.getElementById('member-discount').checked;
+      const memberDiscountBox = document.getElementById('member-discount');
+      const memberDiscount = memberDiscountBox ? memberDiscountBox.checked : false;
       const tillaggCheckbox = document.getElementById('tillagg');
       const tillaggChecked = tillaggCheckbox ? tillaggCheckbox.checked : false;
 
@@ -83,8 +84,10 @@ window.Webflow.push(() => {
     const endDate = CurrentSelectedDates[1]
       ? CurrentSelectedDates[1].toISOString().split('T')[0]
       : ''; // Get the selected end date
-    const memberDiscount = document.getElementById('member-discount').checked;
-    const tillaggChecked = this.checked; // Get the checked state of the checkbox
+    const memberDiscountBox = document.getElementById('member-discount');
+    const memberDiscount = memberDiscountBox ? memberDiscountBox.checked : false;
+    const tillaggCheckbox = document.getElementById('tillagg');
+    const tillaggChecked = tillaggCheckbox ? tillaggCheckbox.checked : false; // Get the checked state of the checkbox
 
     const totalPrice = calculateTotalPrice(
       startDate,
@@ -94,29 +97,31 @@ window.Webflow.push(() => {
       allLodgesRate
     );
 
-    // updating the total price when member discount is checked
-    document.getElementById('member-discount').addEventListener('change', function () {
-      const startDate = CurrentSelectedDates[0]
-        ? CurrentSelectedDates[0].toISOString().split('T')[0]
-        : ''; // Get the selected start date
-      const endDate = CurrentSelectedDates[1]
-        ? CurrentSelectedDates[1].toISOString().split('T')[0]
-        : ''; // Get the selected end date
-      const memberDiscount = document.getElementById('member-discount').checked;
-      const tillaggCheckbox = document.getElementById('tillagg');
-      const tillaggChecked = tillaggCheckbox ? tillaggCheckbox.checked : false; // Get the checked state of the checkbox
+    document.getElementById('total-price').textContent = totalPrice.toString();
+    appendPriceInput(totalPrice);
+  });
+  // updating the total price when member discount is checked
+  document.getElementById('member-discount').addEventListener('change', function () {
+    const startDate = CurrentSelectedDates[0]
+      ? CurrentSelectedDates[0].toISOString().split('T')[0]
+      : ''; // Get the selected start date
+    const endDate = CurrentSelectedDates[1]
+      ? CurrentSelectedDates[1].toISOString().split('T')[0]
+      : ''; // Get the selected end date
 
-      const totalPrice = calculateTotalPrice(
-        startDate,
-        endDate,
-        memberDiscount,
-        tillaggChecked,
-        allLodgesRate
-      );
+    const memberDiscountBox = document.getElementById('member-discount');
+    const memberDiscount = memberDiscountBox ? memberDiscountBox.checked : false;
+    const tillaggCheckbox = document.getElementById('tillagg');
+    const tillaggChecked = tillaggCheckbox ? tillaggCheckbox.checked : false; // Get the checked state of the checkbox
 
-      document.getElementById('total-price').textContent = totalPrice.toString();
-      appendPriceInput(totalPrice);
-    });
+    const totalPrice = calculateTotalPrice(
+      startDate,
+      endDate,
+      memberDiscount,
+      tillaggChecked,
+      allLodgesRate
+    );
+
     document.getElementById('total-price').textContent = totalPrice.toString();
     appendPriceInput(totalPrice);
   });
@@ -125,30 +130,6 @@ window.Webflow.push(() => {
     const priceInput = document.getElementById('price-input');
     priceInput.value = totalPrice.toString();
   }
-
-  // const calculateTotalPrice = (startDate, endDate, memberDiscount, allLodgesRate) => {
-  //   const start = new Date(startDate);
-  //   const end = new Date(endDate);
-
-  //   let totalPrice = 0;
-
-  //   const currentDate = new Date(start);
-  //   while (currentDate < end) {
-  //     const isWeekend = currentDate.getDay() === 5 || currentDate.getDay() === 4;
-
-  //     const nightlyRate = isWeekend ? allLodgesRate.weekendRate : allLodgesRate.weekdayRate;
-
-  //     if (memberDiscount) {
-  //       totalPrice += nightlyRate * 0.7;
-  //     } else {
-  //       totalPrice += nightlyRate;
-  //     }
-
-  //     currentDate.setDate(currentDate.getDate() + 1);
-  //   }
-
-  //   return totalPrice;
-  // };
 
   function calculateTotalPrice(startDate, endDate, memberDiscount, tillaggChecked, allLodgesRate) {
     const start = new Date(startDate);
@@ -172,7 +153,7 @@ window.Webflow.push(() => {
     if (memberDiscount) {
       totalPrice *= 0.7; // Add 30% discount
     }
-    return totalPrice;
+    return totalPrice.toFixed(0); // Return the total price
   }
 });
 
