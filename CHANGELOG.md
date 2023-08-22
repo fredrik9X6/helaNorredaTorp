@@ -1,5 +1,11 @@
 # @fredrik9X6/helaNorredaTorp
 
+## 1.2.2
+
+### Patch Changes
+
+- d06c992: fixat så pris uppdaterar rätt
+
 ## 1.2.1
 
 ### Patch Changes
